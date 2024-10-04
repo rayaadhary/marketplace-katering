@@ -44,11 +44,17 @@ class OrderController extends Controller
 
     public function merchantOrders()
     {
-        $menus = Auth::user()->merchantProfile->menus()->with('order')->get();
+        $merchantProfile = Auth::user()->merchantProfile;
 
-        $orders = $menus->flatMap(function ($menu) {
-            return $menu->order;
-        });
+        if (!$merchantProfile) {
+            $orders = collect();
+        } else {
+            $menus = $merchantProfile->menus()->with('order')->get();
+
+            $orders = $menus->flatMap(function ($menu) {
+                return $menu->order;
+            });
+        }
 
         return view('merchant.order.index', compact('orders'));
     }

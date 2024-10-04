@@ -24,6 +24,10 @@
     @if (session('success'))
         <p>{{ session('success') }}</p>
     @endif
+   @if (Auth::user()->merchantProfile)
+        @if ($menus->isEmpty())
+            <p>Tidak ada menu yang tersedia.</p>
+        @else
                 <div class="table-responsive text-nowrap">
                   <table class="table">
                     <thead>
@@ -69,6 +73,10 @@
                     </tbody>
                   </table>
                 </div>
+           @endif
+    @else
+        <p>Profil merchant belum tersedia.</p>
+    @endif
               </div>
               <!--/ Basic Bootstrap Table -->
               <!--/ Responsive Table -->

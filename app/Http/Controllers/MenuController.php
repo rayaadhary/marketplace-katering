@@ -12,7 +12,13 @@ class MenuController extends Controller
 {
     public function index()
     {
-        $menus = Auth::user()->merchantProfile->menus;
+        $merchantProfile = Auth::user()->merchantProfile;
+
+        if (!$merchantProfile) {
+            $menus = collect();
+        } else {
+            $menus = $merchantProfile->menus;
+        }
 
         return view('merchant.menu.menus', compact('menus'));
     }

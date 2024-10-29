@@ -15,7 +15,7 @@ class OrderController extends Controller
 {
     public function create(Menu $menu)
     {
-        return view('customer.order.create-order', compact('menu'));
+        return view('customer_cms.order.create-order', compact('menu'));
     }
 
     public function store(OrderRequest $request, Menu $menu)
@@ -38,7 +38,7 @@ class OrderController extends Controller
     {
         $orders = Auth::user()->order;
 
-        return view('customer.order.index', compact('orders'));
+        return view('customer_cms.order.index', compact('orders'));
     }
 
 

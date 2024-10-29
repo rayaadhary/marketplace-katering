@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('image')->nullable();
             $table->decimal('price', 8, 2);
-            $table->string('kategori');
+            $table->string('category_id');
             $table->timestamps();
             $table->foreign('merchant_id')->references('id')->on('merchant_profiles')->onDelete('cascade');
         });

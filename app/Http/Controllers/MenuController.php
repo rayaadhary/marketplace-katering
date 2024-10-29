@@ -12,6 +12,12 @@ class MenuController extends Controller
 {
     public function index()
     {
+        $profile = Auth::user()->merchantProfile;
+
+        if (!$profile) {
+            return redirect()->route('merchant.create-profile')->with('warning', 'Silakan lengkapi profil Anda terlebih dahulu.');
+        }
+
         $merchantProfile = Auth::user()->merchantProfile;
 
         if (!$merchantProfile) {

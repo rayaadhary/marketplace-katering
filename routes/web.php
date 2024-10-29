@@ -20,24 +20,34 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CustomerCMSContoller;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\MerchantProfileController;
 
-Route::get('/', [CustomerController::class, 'homeCustomer'])->name('homeCustomer');
-Route::get('/menu', [CustomerController::class, 'menuCustomer'])->name('menuCustomer');
+Route::get('/', [CustomerController::class, 'homeCustomer'])->name('home');
+Route::get('/menu', [CustomerController::class, 'menuCustomer'])->name('menu-customer');
+Route::get('/menu-detail/{id}', [CustomerController::class, 'menuDetail'])->name('menu-detail');
+Route::get('/keranjang', [CustomerController::class, 'keranjang'])->name('keranjang');
+Route::get('/checkout', [CustomerController::class, 'checkout'])->name('checkout');
 
-Route::get('login', [AuthController::class, 'showLoginForm'])->name('loginForm');
-Route::post('login', [AuthController::class, 'login'])->name('login');
-Route::post('logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('register', [AuthController::class, 'showRegisterForm'])->name('register');
-Route::post('register', [AuthController::class, 'register']);
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('loginForm');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', fn () => view('dashboard'))->name('dashboard');
+
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+
+    Route::get('/customerCMS', [CustomerCMSContoller::class, 'index'])->name('customerCMS');
 
     Route::get('/merchant/profile/create', [MerchantProfileController::class, 'create'])->name('merchant.create-profile');
+
     Route::post('/merchant/profile', [MerchantProfileController::class, 'store'])->name('merchant.store-profile');
     Route::get('/merchant/profile', [MerchantProfileController::class, 'showProfile'])->name('merchant.profile');
     Route::get('/merchant/profile/edit', [MerchantProfileController::class, 'editProfile'])->name('merchant.edit-profile');
@@ -52,10 +62,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('merchant/orders', [OrderController::class, 'merchantOrders'])->name('merchant.orders');
 
-    Route::get('customer/orders/{order}/invoice/pdf', [OrderController::class, 'generateInvoicePDF'])->name('customer.order.invoice.pdf');
+    Route::get('/customerCMS/orders/{order}/invoice/pdf', [OrderController::class, 'generateInvoicePDF'])->name('customer.order.invoice.pdf');
 
-    Route::get('/customer', [CustomerController::class, 'index'])->name('customer');
-    Route::get('/customer/orders', [OrderController::class, 'index'])->name('customer.orders');
-    Route::get('/customer/menu/{menu}/order', [OrderController::class, 'create'])->name('customer.order.create');
-    Route::post('/customer/menu/{menu}/order', [OrderController::class, 'store'])->name('customer.order.store');
+    Route::get('/customerCMS/orders', [OrderController::class, 'index'])->name('customer.orders');
+    Route::get('/customerCMS/menu/{menu}/order', [OrderController::class, 'create'])->name('customer.order.create');
+    Route::post('/customerCMS/menu/{menu}/order', [OrderController::class, 'store'])->name('customer.order.store');
 });

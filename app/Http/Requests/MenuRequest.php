@@ -26,6 +26,7 @@ class MenuRequest extends FormRequest
             'description' => 'required|string',
             'price' => 'required|numeric',
             'image' => 'nullable|image',
+            'kategori' => 'required',
         ];
     }
 }

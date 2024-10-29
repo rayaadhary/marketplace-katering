@@ -11,7 +11,7 @@ class Menu extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['merchant_id', 'name', 'description', 'image', 'price'];
+    protected $fillable = ['merchant_id', 'name', 'description', 'image', 'price', 'kategori'];
 
     public function merchantProfile()
     {

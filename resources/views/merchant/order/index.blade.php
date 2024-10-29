@@ -1,54 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('merchant.partials.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+@section('title')
+    Orders
+@endsection
 
-<body>
-    <h1>Daftar Pesanan</h1>
+@section('content')
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <h1 class="mb-4">Daftar Pesanan</h1>
 
-   @if (Auth::user()->merchantProfile)
-        @if ($orders->isEmpty())
-            <p>Tidak ada pesanan yang masuk.</p>
-        @else
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nama Menu</th>
-                        <th>Jumlah Porsi</th>
-                        <th>Tanggal Pengiriman</th>
-                        <th>Total Harga</th>
-                        <th>Nama Customer</th>
-                        <th>Cetak</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($orders as $order)
+        @if (Auth::user()->merchantProfile)
+            @if ($orders->isEmpty())
+                <div class="alert alert-info" role="alert">
+                    Tidak ada pesanan yang masuk.
+                </div>
+            @else
+                <table class="table table-striped table-bordered">
+                    <thead class="">
                         <tr>
-                            <td>{{ $order->menu->name }}</td>
-                            <td>{{ $order->quantity }}</td>
-                            <td>{{ $order->delivery_date }}</td>
-                            <td>Rp {{ number_format($order->total_price, 0, ',', '.') }}</td>
-                            <td>{{ $order->user->name }}</td>
-                            <td>
-                                <form action="{{ route('customer.order.invoice.pdf', $order->id) }}" method="GET"
-                                    style="display:inline;">
-                                    @csrf
-                                    <button type="submit">Cetak</button>
-                                </form>
-                            </td>
+                            <th>Nama Menu</th>
+                            <th>Jumlah Porsi</th>
+                            <th>Tanggal Pengiriman</th>
+                            <th>Total Harga</th>
+                            <th>Nama Customer</th>
+                            <th>Cetak</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach ($orders as $order)
+                            <tr>
+                                <td>{{ $order->menu->name }}</td>
+                                <td>{{ $order->quantity }}</td>
+                                <td>{{ $order->delivery_date }}</td>
+                                <td>Rp {{ number_format($order->total_price, 0, ',', '.') }}</td>
+                                <td>{{ $order->user->name }}</td>
+                                <td>
+                                    <form action="{{ route('customer.order.invoice.pdf', $order->id) }}" method="GET" style="display:inline;">
+                                        @csrf
+                                        <button type="submit" class="btn btn-secondary btn-sm">Cetak</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            @endif
+        @else
+            <div class="alert alert-warning" role="alert">
+                Profil merchant belum tersedia.
+            </div>
         @endif
-    @else
-        <p>Profil merchant belum tersedia.</p>
-    @endif
-</body>
-
-</html>
+    </div>
+    <!-- / Content -->
+@endsection

@@ -1,20 +1,11 @@
-@extends('merchant.partials.main')
-@section('contents')
-    <div class="layout-wrapper layout-content-navbar">
-      <div class="layout-container">
-        
-        @include('merchant.partials.sidebar')
+@extends('merchant.partials.app')
 
-        <!-- Layout container -->
-        <div class="layout-page">
-          <!-- Navbar -->
 
-          <!-- / Navbar -->
+@section('title')
+    Merchant Menu
+@endsection
 
-          <!-- Content wrapper -->
-          <div class="content-wrapper">
-            <!-- Content -->
-
+@section('content')
             <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Menu/</span> Tambah Menu</h4>
 
@@ -49,7 +40,7 @@
                         <div class="row mb-3">
                           <label class="col-sm-2 col-form-label" for="nama_menu">Nama Menu</label>
                           <div class="col-sm-10">
-                        <input type="text" name="name" class="form-control" id="nama_menu" value="{{ old('name') }}">   
+                        <input type="text" name="name" class="form-control" id="nama_menu" value="{{ old('name') }}">
                         </div>
                         </div>
                         <div class="row mb-3">
@@ -70,6 +61,17 @@
                         <input type="file" name="image"  id="image" class="form-control">
                         </div>
                         </div>
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="kategori">Kategori</label>
+                          <div class="col-sm-10">
+                            <select name="kategori" id="kategori" class="form-control">
+                              <option value="paket pagi">Paket Pagi</option>
+                              <option value="paket siang">Paket Siang</option>
+                              <option value="paket malam">Paket Malam</option>
+                              <option value="paket single">Paket Single</option>
+                            </select>
+                          </div>
+                      </div>
                         <div class="row justify-content-end">
                           <div class="col-sm-10">
                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -79,21 +81,7 @@
                     </div>
                   </div>
                 </div>
-              
+
               </div>
             </div>
-            <!-- / Content -->
-
-
-            <div class="content-backdrop fade"></div>
-          </div>
-          <!-- Content wrapper -->
-        </div>
-        <!-- / Layout page -->
-      </div>
-
-      <!-- Overlay -->
-      <div class="layout-overlay layout-menu-toggle"></div>
-    </div>
 @endsection
-  

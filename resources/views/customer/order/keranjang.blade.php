@@ -30,11 +30,12 @@
                         <tr>
                             <th scope="row">
                                 <div class="d-flex align-items-center">
-                                    <img src="customer/img/vegetable-item-3.png" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
+                                    <img src="customer/img/sate.jpg" class="img-fluid me-5 rounded-circle"
+                                        style="width: 80px; height: 80px;" alt="">
                                 </div>
                             </th>
                             <td>
-                                <p class="mb-0 mt-4">Big Banana</p>
+                                <p class="mb-0 mt-4">Sate</p>
                             </td>
                             <td>
                                 <p class="mb-0 mt-4">Rp. 20.000,-</p>
@@ -46,7 +47,8 @@
                                             <i class="fa fa-minus"></i>
                                         </button>
                                     </div>
-                                    <input type="text" class="form-control form-control-sm text-center border-0" value="1">
+                                    <input type="text" class="form-control form-control-sm text-center border-0"
+                                        value="1">
                                     <div class="input-group-btn">
                                         <button class="btn btn-sm btn-plus rounded-circle bg-light border">
                                             <i class="fa fa-plus"></i>
@@ -67,11 +69,12 @@
                         <tr>
                             <th scope="row">
                                 <div class="d-flex align-items-center">
-                                    <img src="customer/img/vegetable-item-5.jpg" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="" alt="">
+                                    <img src="customer/img/sup-mie.jpg" class="img-fluid me-5 rounded-circle"
+                                        style="width: 80px; height: 80px;" alt="" alt="">
                                 </div>
                             </th>
                             <td>
-                                <p class="mb-0 mt-4">Potatoes</p>
+                                <p class="mb-0 mt-4">Sup Mie</p>
                             </td>
                             <td>
                                 <p class="mb-0 mt-4">Rp. 20.000,-</p>
@@ -83,7 +86,8 @@
                                             <i class="fa fa-minus"></i>
                                         </button>
                                     </div>
-                                    <input type="text" class="form-control form-control-sm text-center border-0" value="1">
+                                    <input type="text" class="form-control form-control-sm text-center border-0"
+                                        value="1">
                                     <div class="input-group-btn">
                                         <button class="btn btn-sm btn-plus rounded-circle bg-light border">
                                             <i class="fa fa-plus"></i>
@@ -103,11 +107,12 @@
                         <tr>
                             <th scope="row">
                                 <div class="d-flex align-items-center">
-                                    <img src="customer/img/vegetable-item-2.jpg" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="" alt="">
+                                    <img src="customer/img/rendang.jpg" class="img-fluid me-5 rounded-circle"
+                                        style="width: 80px; height: 80px;" alt="" alt="">
                                 </div>
                             </th>
                             <td>
-                                <p class="mb-0 mt-4">Awesome Brocoli</p>
+                                <p class="mb-0 mt-4">Rendang</p>
                             </td>
                             <td>
                                 <p class="mb-0 mt-4">Rp. 20.000,-</p>
@@ -119,7 +124,8 @@
                                             <i class="fa fa-minus"></i>
                                         </button>
                                     </div>
-                                    <input type="text" class="form-control form-control-sm text-center border-0" value="1">
+                                    <input type="text" class="form-control form-control-sm text-center border-0"
+                                        value="1">
                                     <div class="input-group-btn">
                                         <button class="btn btn-sm btn-plus rounded-circle bg-light border">
                                             <i class="fa fa-plus"></i>
@@ -147,21 +153,23 @@
                             <h1 class="display-6 mb-4">Checkout</h1>
                             <div class="d-flex justify-content-between mb-4">
                                 <h5 class="mb-0 me-4">Subtotal:</h5>
-                                <p class="mb-0">Rp. 20.000</p>
+                                <p class="mb-0">Rp. 60.000</p>
                             </div>
                             <div class="d-flex justify-content-between">
                                 <h5 class="mb-0 me-4">Pengiriman</h5>
                                 <div class="">
-                                    <p class="mb-0">tarif: Rp. 3000</p>
+                                    <p class="mb-0">tarif: Rp. 3.000</p>
                                 </div>
                             </div>
                             <p class="mb-0 text-end">Dikirim ke PT Trans</p>
                         </div>
                         <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                             <h5 class="mb-0 ps-4 me-4">Total</h5>
-                            <p class="mb-0 pe-4">Rp. 20.000</p>
+                            <p class="mb-0 pe-4">Rp. 63.000</p>
                         </div>
-                        <a href="{{ url('/checkout') }}" class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4">Proses Checkout</a>
+                        <a href="{{ route('checkout') }}"
+                            class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4">Proses
+                            Checkout</a>
                     </div>
                 </div>
             </div>
